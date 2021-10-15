@@ -218,7 +218,7 @@ namespace PortScanner
                     if (portData.ContainsKey(i))
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"\t{i}\t{portData[i].localAddress}\t{portData[i].type.ToString()}");
+                        Console.WriteLine($"\t{i}\t{portData[i].localAddress}\t{portData[i].type.ToString()}");
                         Console.ResetColor();
                     }
                     else
