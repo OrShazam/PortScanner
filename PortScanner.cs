@@ -178,6 +178,9 @@ namespace PortScanner
             }
             else if (e.Key == Keys.Down)
             {
+                if (sleepTime == 0){
+                    sleepTime += 50;
+                }
                 sleepTime += sleepTime / 4;
             }
 
@@ -199,7 +202,7 @@ namespace PortScanner
                     if (portData.ContainsKey(i))
                     {
                         Console.ForegroundColor = ConsoleColor.Green;
-                        Console.Write($"\t{i}\t{portData[i].localAddress}\t{portData[i].type.ToString()}");
+                        Console.WriteLine($"\t{i}\t{portData[i].localAddress}\t{portData[i].type.ToString()}");
                         Console.ResetColor();
                     }
                     else
