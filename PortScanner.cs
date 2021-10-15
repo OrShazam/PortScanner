@@ -174,11 +174,11 @@ namespace PortScanner
         {
             if (e.Key == Keys.Up)
             {
-                sleepTime -= 50;
+                sleepTime -= sleepTime / 4;
             }
             else if (e.Key == Keys.Down)
             {
-                sleepTime += 50;
+                sleepTime += sleepTime / 4;
             }
 
         }
@@ -193,7 +193,7 @@ namespace PortScanner
             HotKeyManager.RegisterHotKey(Keys.Down, KeyModifiers.Shift);
             Console.WriteLine("\nPress [SHIFT] + [UP] to move faster or [SHIFT] + [DOWN] to move slower");
             Console.WriteLine("Listing data about 1024 first ports...");
-            Console.Write("\t|PORT|\t|Local Address|\t|Type|");
+            Console.WriteLine("\t|PORT|\t|Local Address|\t|Type|");
             for (int i = 1; i <= 1024; i++)
             {
                     if (portData.ContainsKey(i))
