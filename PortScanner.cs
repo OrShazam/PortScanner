@@ -178,9 +178,8 @@ namespace PortScanner
             }
             else if (e.Key == Keys.Down)
             {
-                if (sleepTime == 0){
-                    sleepTime += 50;
-                }
+                if (sleepTime == 0)
+                    sleepTime = 30;
                 sleepTime += sleepTime / 4;
             }
 
@@ -199,17 +198,23 @@ namespace PortScanner
             Console.WriteLine("\t|PORT|\t|Local Address|\t|Type|");
             for (int i = 1; i <= 1024; i++)
             {
-                    if (portData.ContainsKey(i))
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine($"\t{i}\t{portData[i].localAddress}\t{portData[i].type.ToString()}");
-                        Console.ResetColor();
-                    }
-                    else
-                        Console.WriteLine($"\t{i}");
+                if (portData.ContainsKey(i))
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine($"\t{i}\t{portData[i].localAddress}\t{portData[i].type.ToString()}");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"\t{i}");
+
+                }
+
                 if (sleepTime > 0)
                     Thread.Sleep(sleepTime);
             }
+            Console.ResetColor();
             Console.Write("To List data about the rest of the ports? (y/n) ");
             if (Console.ReadLine().ToLower()[0] == 'y')
             {
@@ -217,12 +222,16 @@ namespace PortScanner
                 {
                     if (portData.ContainsKey(i))
                     {
-                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine($"\t{i}\t{portData[i].localAddress}\t{portData[i].type.ToString()}");
                         Console.ResetColor();
                     }
                     else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine($"\t{i}");
+
+                    }
                     if (sleepTime > 0)
                         Thread.Sleep(sleepTime);
 
