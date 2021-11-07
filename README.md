@@ -1,2 +1,2 @@
 # PortScanner
-a fancy port scanner
+a fancy local port scanner
